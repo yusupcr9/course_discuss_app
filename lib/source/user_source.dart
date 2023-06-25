@@ -29,11 +29,14 @@ class UserSource {
         'username': username,
         'password': password,
       });
-      DMethod.printTitle('User Resource - Login', response.body);
+      print("===========");
+      print(response.body);
+      print("===========");
+      DMethod.printTitle('User Resource - Login MASUK', response.body);
       Map responseBody = jsonDecode(response.body);
       return responseBody;
     } catch (e) {
-      DMethod.printTitle("User Resource - Login", e.toString());
+      DMethod.printTitle("User Resource - Login GAGAL", e.toString());
       return {"success": false};
     }
   }
