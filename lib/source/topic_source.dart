@@ -5,8 +5,6 @@ import 'package:course_discuss_app/model/topic.dart';
 import 'package:d_method/d_method.dart';
 import 'package:http/http.dart';
 
-import '../model/user.dart';
-
 class TopicSource {
   static Future<bool> create(
     String title,
