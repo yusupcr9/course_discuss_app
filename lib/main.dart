@@ -36,6 +36,11 @@ class MyApp extends StatelessWidget {
             primarySwatch: AppColor.primary,
             colorScheme: const ColorScheme.light().copyWith(
               primary: AppColor.primary,
+              secondary: AppColor.primary,
+            ),
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: AppColor.primary,
+              foregroundColor: Colors.white,
             )),
         routerConfig: AppRoute.routerConfig,
       ),
