@@ -7,7 +7,7 @@ class CAccount extends ChangeNotifier {
     'following': 0.0,
     'follower': 0.0,
   };
-  Map<String, dynamic> get state => _stat;
+  Map<String, dynamic> get stat => _stat;
   setStat(String idUser) async {
     _stat = await UserSource.stat(idUser);
     notifyListeners();

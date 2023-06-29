@@ -1,3 +1,4 @@
+import 'package:course_discuss_app/config/session.dart';
 import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,11 @@ class FeedFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: DView.textTitle('Feed'),
+      child: ElevatedButton(
+          onPressed: () {
+            Session.clearUser();
+          },
+          child: Text("Logout")),
     );
   }
 }

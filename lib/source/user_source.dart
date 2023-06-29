@@ -51,9 +51,9 @@ class UserSource {
     try {
       Response response = await Client().post(Uri.parse(url), body: {
         'id': id,
-        'oldImage': oldImage,
-        'newImage': newImage,
-        'newBase64code': newBase64code,
+        'old_image': oldImage,
+        'new_image': newImage,
+        'new_base64code': newBase64code,
       });
       DMethod.printTitle('User Resource - Update Image', response.body);
       Map responseBody = jsonDecode(response.body);
