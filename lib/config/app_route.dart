@@ -5,6 +5,7 @@ import 'package:course_discuss_app/controller/c_follower.dart';
 import 'package:course_discuss_app/controller/c_profile.dart';
 import 'package:course_discuss_app/controller/c_search.dart';
 import 'package:course_discuss_app/page/add_topic.dart';
+import 'package:course_discuss_app/page/detail_topic_page.dart';
 import 'package:course_discuss_app/page/error_page.dart';
 import 'package:course_discuss_app/page/login_page.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../controller/c_following.dart';
+import '../model/topic.dart';
 import '../model/user.dart';
 import '../page/home_page.dart';
 import '../page/register_page.dart';
@@ -26,6 +28,8 @@ class AppRoute {
   static const follower = '/follower';
   static const following = '/following';
   static const comment = '/comment';
+  static const detailTopic = '/detail-topic';
+  static const updateTopic = '/update-topic';
 
   static GoRouter routerConfig = GoRouter(
     errorBuilder: (context, state) => ErrorPage(
@@ -96,6 +100,12 @@ class AppRoute {
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CComment(),
           child: const Scaffold(),
+        ),
+      ),
+      GoRoute(
+        path: detailTopic,
+        builder: (context, state) => DetailTopicPage(
+          topic: state.extra as Topic,
         ),
       ),
     ],
