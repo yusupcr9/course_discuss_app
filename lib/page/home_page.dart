@@ -46,7 +46,9 @@ class HomePage extends StatelessWidget {
           child: menu[_.indexMenu]['view'],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            context.push(AppRoute.addTopic);
+          },
           mini: true,
           tooltip: 'Create New Topic',
           child: const Icon(Icons.create),

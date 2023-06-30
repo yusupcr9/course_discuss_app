@@ -1,5 +1,6 @@
 import 'package:course_discuss_app/config/app_color.dart';
 import 'package:course_discuss_app/config/app_route.dart';
+import 'package:course_discuss_app/config/session.dart';
 import 'package:course_discuss_app/controller/c_account.dart';
 import 'package:course_discuss_app/controller/c_explore.dart';
 import 'package:course_discuss_app/controller/c_feed.dart';
@@ -29,21 +30,26 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CMyTopic()),
         ChangeNotifierProvider(create: (_) => CAccount()),
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            primarySwatch: AppColor.primary,
-            colorScheme: const ColorScheme.light().copyWith(
-              primary: AppColor.primary,
-              secondary: AppColor.primary,
-            ),
-            floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: AppColor.primary,
-              foregroundColor: Colors.white,
-            )),
-        routerConfig: AppRoute.routerConfig,
-      ),
+      builder: (context, child) {
+        Session.getUser().then((user) {
+          if (user != null) context.read<CUser>().data = user;
+        });
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+              primarySwatch: AppColor.primary,
+              colorScheme: const ColorScheme.light().copyWith(
+                primary: AppColor.primary,
+                secondary: AppColor.primary,
+              ),
+              floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: AppColor.primary,
+                foregroundColor: Colors.white,
+              )),
+          routerConfig: AppRoute.routerConfig,
+        );
+      },
     );
   }
 }
