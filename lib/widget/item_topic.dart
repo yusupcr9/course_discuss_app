@@ -26,7 +26,9 @@ class ItemTopic extends StatelessWidget {
             Row(
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.push(AppRoute.profile, extra: topic.user);
+                  },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.network(
@@ -75,16 +77,20 @@ class ItemTopic extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4),
                     ),
                     padding: const EdgeInsets.fromLTRB(12, 5, 8, 5),
-                    child: DView.textAction(
-                      () {
-                        // context.push(AppRoute.detailTopic, extra: topic);
-                      },
-                      text: 'Detail',
-                      size: 14,
-                      color: Theme.of(context).primaryColor,
-                      iconRight: Icons.navigate_next,
-                      iconRightSize: 17,
-                      iconRightColor: Theme.of(context).primaryColor,
+                    child: Row(
+                      children: [
+                        Text(
+                          'Detail',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: AppColor.primary,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Icon(
+                          Icons.navigate_next,
+                          color: AppColor.primary,
+                        )
+                      ],
                     ),
                   ),
                 )

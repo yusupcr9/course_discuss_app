@@ -32,6 +32,10 @@ class FollowSource {
   ) async {
     String url = '${Api.follow}/following.php';
     try {
+      print("===================");
+      print(fromIdUser);
+      print(toIdUser);
+      print("===================");
       Response response = await Client().post(Uri.parse(url), body: {
         'from_id_user': fromIdUser,
         'to_id_user': toIdUser,

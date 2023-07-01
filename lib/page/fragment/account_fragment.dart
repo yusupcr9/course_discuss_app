@@ -169,19 +169,33 @@ class AccountFragment extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    itemStat("Topic", _.stat['topic']),
+                    Expanded(child: itemStat("Topic", _.stat['topic'])),
                     Container(
                       color: Colors.grey,
                       height: 30,
                       width: 0.5,
                     ),
-                    itemStat("Follower", _.stat['follower']),
+                    Expanded(
+                      child: GestureDetector(
+                          onTap: () {
+                            context.push(AppRoute.follower,
+                                extra: context.read<CUser>().data);
+                          },
+                          child: itemStat("Follower", _.stat['follower'])),
+                    ),
                     Container(
                       color: Colors.grey,
                       height: 30,
                       width: 0.5,
                     ),
-                    itemStat("Following", _.stat['following']),
+                    Expanded(
+                      child: GestureDetector(
+                          onTap: () {
+                            context.push(AppRoute.following,
+                                extra: context.read<CUser>().data);
+                          },
+                          child: itemStat("Following", _.stat['following'])),
+                    ),
                   ],
                 ),
               ),
@@ -202,14 +216,12 @@ class AccountFragment extends StatelessWidget {
   }
 
   Widget itemStat(String title, num value) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(title),
-          DView.spaceHeight(4),
-          DView.textTitle(AppFormat.infoNumber(value.toDouble())),
-        ],
-      ),
+    return Column(
+      children: [
+        Text(title),
+        DView.spaceHeight(4),
+        DView.textTitle(AppFormat.infoNumber(value.toDouble())),
+      ],
     );
   }
 }
