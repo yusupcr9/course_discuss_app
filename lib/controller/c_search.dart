@@ -27,6 +27,9 @@ class CSearch extends ChangeNotifier {
   List<Topic> get topics => _topics;
   setTopics(String query) async {
     _topics = await TopicSource.search(query);
+    print("===================");
+    print(await TopicSource.search(query));
+    print("===================");
     notifyListeners();
   }
 
@@ -34,6 +37,9 @@ class CSearch extends ChangeNotifier {
   List<User> get users => _users;
   setUsers(String query) async {
     _users = await UserSource.search(query);
+    print("===================");
+    print(await UserSource.search(query));
+    print("===================");
     notifyListeners();
   }
 }

@@ -29,9 +29,6 @@ class UserSource {
         'username': username,
         'password': password,
       });
-      print("===========");
-      print(response.body);
-      print("===========");
       DMethod.printTitle('User Resource - Login MASUK', response.body);
       Map responseBody = jsonDecode(response.body);
       return responseBody;
@@ -87,20 +84,20 @@ class UserSource {
     String url = '${Api.user}/search.php';
     try {
       Response response = await Client().post(Uri.parse(url), body: {
-        'search_quer': query,
+        'search_query': query,
       });
-      DMethod.printTitle('User Resource - Stat', response.body);
+      DMethod.printTitle('User Resource - Search', response.body);
       Map responseBody = jsonDecode(response.body);
       if (responseBody['success']) {
         List list = responseBody['data'];
-        list.map((e) {
+        return list.map((e) {
           Map<String, dynamic> item = Map<String, dynamic>.from(e);
           return User.fromJson(item);
         }).toList();
       }
       return [];
     } catch (e) {
-      DMethod.printTitle("User Resource - Stat", e.toString());
+      DMethod.printTitle("User Resource - Search", e.toString());
       return [];
     }
   }

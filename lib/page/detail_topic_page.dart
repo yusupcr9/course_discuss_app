@@ -16,9 +16,6 @@ class DetailTopicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> images = List<String>.from(jsonDecode(topic.images));
-    print("==========================");
-    print(images);
-    print("==========================");
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 8,

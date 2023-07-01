@@ -8,6 +8,7 @@ import 'package:course_discuss_app/page/add_topic.dart';
 import 'package:course_discuss_app/page/detail_topic_page.dart';
 import 'package:course_discuss_app/page/error_page.dart';
 import 'package:course_discuss_app/page/login_page.dart';
+import 'package:course_discuss_app/page/search_page.dart';
 import 'package:course_discuss_app/page/update_topic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +18,7 @@ import '../controller/c_following.dart';
 import '../model/topic.dart';
 import '../model/user.dart';
 import '../page/home_page.dart';
+import '../page/profile_page.dart';
 import '../page/register_page.dart';
 
 class AppRoute {
@@ -72,14 +74,14 @@ class AppRoute {
         path: profile,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CProfile(),
-          child: const Scaffold(),
+          child: ProfilePage(user: state.extra as User),
         ),
       ),
       GoRoute(
         path: search,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CSearch(),
-          child: const Scaffold(),
+          child: SearchPage(),
         ),
       ),
       GoRoute(
